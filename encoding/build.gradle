@@ -5,8 +5,8 @@ dependencies {
     api "$immutables_group:encode:$immutables_version"
 
     if (JavaVersion.current().isJava8()) {
-        compileOnly "com.google.code.findbugs:annotations:3.0.1"
-        testCompileOnly "com.google.code.findbugs:annotations:3.0.1"
+        compileOnly "com.google.code.findbugs:annotations:3.0.1u2"
+        testCompileOnly "com.google.code.findbugs:annotations:3.0.1u2"
     }
 }
 
@@ -58,37 +58,6 @@ publishing {
                 }
             }
         }
-    }
-
-    if (!isJitpack) {
-        repositories {
-            maven {
-                if (isRelease) {
-                    url 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
-                } else {
-                    url 'https://oss.sonatype.org/content/repositories/snapshots'
-                }
-                def sonatypeUsername = findProperty('sonatypeUsername')
-                def sonatypePassword = findProperty('sonatypePassword')
-                if (sonatypeUsername != null && sonatypePassword != null) {
-                    credentials {
-                        username sonatypeUsername
-                        password sonatypePassword
-                    }
-                }
-            }
-        }
-    }
-}
-
-if (!isJitpack && isRelease) {
-    signing {
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
-        if (signingKey != null && signingPassword != null) {
-            useInMemoryPgpKeys(new String(signingKey.decodeBase64()), signingPassword as String)
-        }
-        sign publishing.publications.mavenJava
     }
 }
 

@@ -2,8 +2,8 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
-    id 'com.github.ben-manes.versions' version '0.38.0'
-    id 'net.researchgate.release' version '2.8.1'
+    id 'com.github.ben-manes.versions' version '0.50.0'
+    id 'net.researchgate.release' version '3.0.2'
 }
 
 ext {
@@ -14,14 +14,14 @@ ext {
     }
 
     reactor_bom_version = '2023.0.0'
-    jackson_databind_version = '2.12.7.1'
-    jackson_datatype_jsr310_version = '2.14.2'
-    jackson_datatype_jdk8_version = '2.12.7'
+    jackson_databind_version = '2.16.0'
+    jackson_datatype_jsr310_version = '2.16.0'
+    jackson_datatype_jdk8_version = '2.16.0'
     immutables_group = 'org.immutables'
-    immutables_version = '2.9.0'
+    immutables_version = '2.10.0'
 
-    junit_version = '5.7.1'
-    logback_version = '1.2.3'
+    junit_version = '5.10.1'
+    logback_version = '1.4.11'
 
     isJitpack = "true" == System.getenv("JITPACK")
     isRelease = !version.toString().endsWith('-SNAPSHOT')
@@ -78,6 +78,12 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
         options.incremental = true
+        /**
+         * T.T
+         * https://github.com/immutables/immutables/issues/1339
+         */
+        options.fork = true
+        options.forkOptions.jvmArgs.add("--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED")
     }
 
     java {
