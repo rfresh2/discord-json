@@ -13,7 +13,7 @@ ext {
         jdk_javadoc = "https://docs.oracle.com/en/java/javase/$jdk/docs/api/".toString()
     }
 
-    reactor_bom_version = '2020.0.35'
+    reactor_bom_version = '2023.0.0'
     jackson_databind_version = '2.12.7.1'
     jackson_datatype_jsr310_version = '2.14.2'
     jackson_datatype_jdk8_version = '2.12.7'
@@ -31,14 +31,9 @@ allprojects {
     apply plugin: 'java-library'
     apply plugin: 'com.github.ben-manes.versions'
     apply plugin: 'maven-publish'
-    if (!isJitpack && isRelease) {
-        apply plugin: 'signing'
-    }
 
     group 'com.discord4j'
     description 'Discord entity domain as immutable Jackson objects'
-
-    sourceCompatibility = 8
 
     repositories {
         mavenCentral()
@@ -108,11 +103,6 @@ dependencies {
     compileOnly "$immutables_group:builder:$immutables_version"
     annotationProcessor "$immutables_group:value:$immutables_version"
 
-    if (JavaVersion.current().isJava8()) {
-        compileOnly "com.google.code.findbugs:annotations:3.0.1"
-        testCompileOnly "com.google.code.findbugs:annotations:3.0.1"
-    }
-
     testCompileOnly project(':encoding')
     testCompileOnly "$immutables_group:value:$immutables_version"
     testAnnotationProcessor "$immutables_group:value:$immutables_version"
@@ -167,26 +157,6 @@ publishing {
             }
         }
     }
-
-    if (!isJitpack) {
-        repositories {
-            maven {
-                if (isRelease) {
-                    url 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
-                } else {
-                    url 'https://oss.sonatype.org/content/repositories/snapshots'
-                }
-                def sonatypeUsername = findProperty('sonatypeUsername')
-                def sonatypePassword = findProperty('sonatypePassword')
-                if (sonatypeUsername != null && sonatypePassword != null) {
-                    credentials {
-                        username sonatypeUsername
-                        password sonatypePassword
-                    }
-                }
-            }
-        }
-    }
 }
 
 jar {
@@ -197,24 +167,10 @@ jar {
     }
 }
 
-if (!isJitpack && isRelease) {
-    signing {
-        def signingKey = findProperty("signingKey")
-        def signingPassword = findProperty("signingPassword")
-        if (signingKey != null && signingPassword != null) {
-            useInMemoryPgpKeys(new String(signingKey.decodeBase64()), signingPassword as String)
-        }
-        sign publishing.publications.mavenJava
-    }
-}
-
 release {
     preTagCommitMessage = 'Release version'
     tagCommitMessage = 'Release version'
     newVersionCommitMessage = 'Next development version'
-    git {
-        requireBranch = ''
-    }
 }
 
 wrapper {
