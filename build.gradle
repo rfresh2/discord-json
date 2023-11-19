@@ -78,6 +78,12 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = 'UTF-8'
         options.incremental = true
+        /**
+         * T.T
+         * https://github.com/immutables/immutables/issues/1339
+         */
+        options.fork = true
+        options.forkOptions.jvmArgs.add("--add-opens=jdk.compiler/com.sun.tools.javac.code=ALL-UNNAMED")
     }
 
     java {
