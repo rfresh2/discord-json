@@ -5,8 +5,8 @@ dependencies {
     api "$immutables_group:encode:$immutables_version"
 
     if (JavaVersion.current().isJava8()) {
-        compileOnly "com.google.code.findbugs:annotations:3.0.1"
-        testCompileOnly "com.google.code.findbugs:annotations:3.0.1"
+        compileOnly "com.google.code.findbugs:annotations:3.0.1u2"
+        testCompileOnly "com.google.code.findbugs:annotations:3.0.1u2"
     }
 }
 
