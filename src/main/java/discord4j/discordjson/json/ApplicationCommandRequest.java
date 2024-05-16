@@ -59,4 +59,12 @@ public interface ApplicationCommandRequest {
      * value of ApplicationCommandType (defaults to 1, CHAT_INPUT)
      */
     Possible<Integer> type();
+
+    @JsonProperty("integration_types")
+    Possible<List<Integer>> integrationTypes();
+
+    @JsonProperty("contexts")
+    Possible<List<Integer>> contexts();
+
+    Possible<Boolean> nsfw();
 }

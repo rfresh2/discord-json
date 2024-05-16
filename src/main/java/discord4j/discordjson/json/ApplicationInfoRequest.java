@@ -13,6 +13,7 @@ import java.util.Optional;
 @JsonSerialize(as = ImmutableApplicationInfoRequest.class)
 @JsonDeserialize(as = ImmutableApplicationInfoRequest.class)
 public interface ApplicationInfoRequest {
+
     static ImmutableApplicationInfoRequest.Builder builder() {
         return ImmutableApplicationInfoRequest.builder();
     }

@@ -7,6 +7,9 @@ import discord4j.discordjson.Id;
 import discord4j.discordjson.possible.Possible;
 import org.immutables.value.Value;
 
+import java.util.List;
+import java.util.Map;
+
 @Value.Immutable
 @JsonSerialize(as = ImmutableInteractionData.class)
 @JsonDeserialize(as = ImmutableInteractionData.class)
@@ -64,4 +67,12 @@ public interface InteractionData {
 
     @JsonProperty("app_permissions")
     Possible<String> appPermissions();
+
+    @JsonProperty("entitlements")
+    List<EntitlementData> entitlements();
+
+    @JsonProperty("authorizing_integration_owners")
+    Map<Integer, String> authorizingIntegrationOwners();
+
+    Possible<Integer> context();
 }
