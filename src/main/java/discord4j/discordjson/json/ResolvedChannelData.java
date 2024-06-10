@@ -35,6 +35,6 @@ public interface ResolvedChannelData {
     // Only provided if channel is a thread
 
     @JsonProperty("parent_id")
-    Possible<Id> parentId();
+    Possible<Optional<Id>> parentId();
 
 }
