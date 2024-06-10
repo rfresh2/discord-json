@@ -32,9 +32,9 @@ public interface ResolvedChannelData {
     @JsonProperty("thread_metadata")
     Possible<ThreadMetadata> threadMetadata();
 
-    // Only provided if channel is a thread
+    // Provided if channel is a thread. Otherwise can be provided as null depending on gateway permissions
 
     @JsonProperty("parent_id")
-    Possible<Id> parentId();
+    Possible<Optional<Id>> parentId();
 
 }
