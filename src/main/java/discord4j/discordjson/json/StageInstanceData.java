@@ -28,8 +28,4 @@ public interface StageInstanceData {
 
     @JsonProperty("privacy_level")
     int privacyLevel();
-
-    @JsonProperty("discovery_disabled")
-    boolean discoveryDisabled();
-
 }
