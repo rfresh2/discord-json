@@ -13,7 +13,6 @@ ext {
         jdk_javadoc = "https://docs.oracle.com/en/java/javase/$jdk/docs/api/".toString()
     }
 
-    reactor_bom_version = '2023.0.6'
     jackson_databind_version = '2.17.1'
     jackson_datatype_jsr310_version = '2.17.1'
     jackson_datatype_jdk8_version = '2.17.1'
@@ -46,10 +45,8 @@ allprojects {
     }
 
     dependencies {
-        compileOnly platform("io.projectreactor:reactor-bom:$reactor_bom_version")
-        compileOnly 'io.projectreactor:reactor-core'
-        testCompileOnly platform("io.projectreactor:reactor-bom:$reactor_bom_version")
-        testCompileOnly 'io.projectreactor:reactor-core'
+        compileOnly "com.google.code.findbugs:jsr305:3.0.1"
+        testCompileOnly "com.google.code.findbugs:jsr305:3.0.1"
     }
 
     configurations.all {
