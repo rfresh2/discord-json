@@ -19,7 +19,7 @@ ext {
     immutables_group = 'org.immutables'
     immutables_version = '2.10.1'
 
-    junit_version = '5.10.2'
+    junit_version = '5.10.3'
     logback_version = '1.5.6'
 
     isJitpack = "true" == System.getenv("JITPACK")
@@ -45,8 +45,8 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "com.google.code.findbugs:jsr305:3.0.1"
-        testCompileOnly "com.google.code.findbugs:jsr305:3.0.1"
+        compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+        testCompileOnly "com.google.code.findbugs:jsr305:3.0.2"
     }
 
     configurations.all {
