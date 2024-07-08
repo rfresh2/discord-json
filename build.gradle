@@ -13,13 +13,13 @@ ext {
         jdk_javadoc = "https://docs.oracle.com/en/java/javase/$jdk/docs/api/".toString()
     }
 
-    jackson_databind_version = '2.17.1'
-    jackson_datatype_jsr310_version = '2.17.1'
-    jackson_datatype_jdk8_version = '2.17.1'
+    jackson_databind_version = '2.17.2'
+    jackson_datatype_jsr310_version = '2.17.2'
+    jackson_datatype_jdk8_version = '2.17.2'
     immutables_group = 'org.immutables'
     immutables_version = '2.10.1'
 
-    junit_version = '5.10.2'
+    junit_version = '5.10.3'
     logback_version = '1.5.6'
 
     isJitpack = "true" == System.getenv("JITPACK")
@@ -45,8 +45,8 @@ allprojects {
     }
 
     dependencies {
-        compileOnly "com.google.code.findbugs:jsr305:3.0.1"
-        testCompileOnly "com.google.code.findbugs:jsr305:3.0.1"
+        compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+        testCompileOnly "com.google.code.findbugs:jsr305:3.0.2"
     }
 
     configurations.all {
