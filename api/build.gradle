@@ -6,10 +6,25 @@ dependencies {
 archivesBaseName = "discord-json-$project.name"
 
 publishing {
+    repositories {
+        maven {
+            name = "vc"
+            url = "https://maven.2b2t.vc/releases"
+            credentials {
+                username = System.getenv("MAVEN_USERNAME")
+                password = System.getenv("MAVEN_PASSWORD")
+            }
+        }
+    }
     publications {
         mavenJava(MavenPublication) {
             from components.java
             artifactId archivesBaseName
+            version = project.version.toString()
+            var envVer = System.getenv("PUBLISH_VERSION")
+            if (envVer != null) {
+                version = envVer
+            }
 
             versionMapping {
                 usage('java-api') {
