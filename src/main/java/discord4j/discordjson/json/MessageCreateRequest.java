@@ -18,7 +18,4 @@ public interface MessageCreateRequest extends MessageSendRequestBase {
 
     @JsonProperty("enforce_nonce")
     Possible<Boolean> enforceNonce();
-
-    @Deprecated
-    Possible<EmbedData> embed();
 }
