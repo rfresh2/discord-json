@@ -13,14 +13,14 @@ ext {
         jdk_javadoc = "https://docs.oracle.com/en/java/javase/$jdk/docs/api/".toString()
     }
 
-    jackson_databind_version = '2.18.0'
-    jackson_datatype_jsr310_version = '2.18.0'
-    jackson_datatype_jdk8_version = '2.18.0'
+    jackson_databind_version = '2.18.1'
+    jackson_datatype_jsr310_version = '2.18.1'
+    jackson_datatype_jdk8_version = '2.18.1'
     immutables_group = 'org.immutables'
     immutables_version = '2.10.1'
 
-    junit_version = '5.11.2'
-    logback_version = '1.5.11'
+    junit_version = '5.11.3'
+    logback_version = '1.5.12'
 
     isJitpack = "true" == System.getenv("JITPACK")
     isRelease = !version.toString().endsWith('-SNAPSHOT')
