@@ -2,7 +2,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
-    id 'com.github.ben-manes.versions' version '0.51.0'
+    id 'com.github.ben-manes.versions' version '0.52.0'
     id 'net.researchgate.release' version '3.1.0'
 }
 
@@ -19,8 +19,8 @@ ext {
     immutables_group = 'org.immutables'
     immutables_version = '2.10.1'
 
-    junit_version = '5.11.4'
-    logback_version = '1.5.15'
+    junit_version = '5.12.0'
+    logback_version = '1.5.16'
 
     isJitpack = "true" == System.getenv("JITPACK")
     isRelease = !version.toString().endsWith('-SNAPSHOT')
